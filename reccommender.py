@@ -30,10 +30,31 @@ def recommend(movie):
 
 
 st.header('Movie Recommender System')
-movie_dict = pickle.load(open('movie-recommender-system/movie_dict.pkl', 'rb'))
+#movie_dict = pickle.load(open('movie-recommender-system/movie_dict.pkl', 'rb'))
+#movies = pd.DataFrame(movie_dict)
+
+#similarity = pickle.load(open('movie-recommender-system/similarity.pkl', 'rb'))
+
+
+
+import os
+
+# Get the directory where the script is running
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct correct file paths
+movie_dict_path = os.path.join(current_dir, "movie_dict.pkl")
+similarity_path = os.path.join(current_dir, "similarity.pkl")
+
+# Load the data
+with open(movie_dict_path, "rb") as f:
+    movie_dict = pickle.load(f)
+
 movies = pd.DataFrame(movie_dict)
 
-similarity = pickle.load(open('movie-recommender-system/similarity.pkl', 'rb'))
+with open(similarity_path, "rb") as f:
+    similarity = pickle.load(f)
+
 
 movie_list = movies['title'].values
 selected_movie = st.selectbox(
