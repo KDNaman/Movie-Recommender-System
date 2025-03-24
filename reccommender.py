@@ -37,14 +37,10 @@ st.header('Movie Recommender System')
 
 
 
-import os
+# Directly use the file names (they should be in the same folder as recommender.py)
+movie_dict_path = "movie_dict.pkl"
+similarity_path = "similarity.pkl"
 
-# Get the directory where the script is running
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Construct correct file paths
-movie_dict_path = os.path.join(current_dir, "movie_dict.pkl")
-similarity_path = os.path.join(current_dir, "similarity.pkl")
 
 # Load the data
 with open(movie_dict_path, "rb") as f:
